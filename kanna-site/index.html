@@ -1,0 +1,452 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#1a1713">
+<title>Kanna Construction — concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --ink:#16130f; --bg:#f5f2ec; --panel:#1a1713; --accent:#8a6a45;
+  --warm:#cabfae; --cream:#efe9dd;
+  --out:cubic-bezier(.22,1,.36,1);
+  --gut:clamp(20px,5vw,72px);
+}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:min(1240px,100% - var(--gut)*2);margin-inline:auto}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.02em;margin:0}
+h1{font-size:clamp(40px,6.6vw,92px);line-height:1.0;text-wrap:balance}
+h2{font-size:clamp(30px,4.6vw,62px);line-height:1.04}
+h3{font-size:clamp(20px,2.2vw,27px);line-height:1.2}
+p{margin:0 0 1.1em}
+.eyebrow{font:600 11px/1 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--accent)}
+
+/* ---------------------------------------------------------------- header */
+header{position:fixed;inset:0 0 auto;z-index:50;padding:20px 0;
+  transition:background .45s var(--out),backdrop-filter .45s var(--out),padding .45s var(--out)}
+header .row{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-size:21px;letter-spacing:.01em;text-decoration:none}
+html.scrolled header{background:color-mix(in srgb,var(--bg) 86%,transparent);
+  backdrop-filter:saturate(180%) blur(16px);
+  -webkit-backdrop-filter:saturate(180%) blur(16px);padding:12px 0;
+  box-shadow:0 1px 0 color-mix(in srgb,var(--ink) 10%,transparent)}
+.hnav{display:flex;gap:26px;align-items:center}
+.hnav a{font-size:14px;text-decoration:none;opacity:.72;transition:opacity .3s,color .3s}
+/* Over a bright sky, 72% white on white is unreadable. Until the header takes
+   its background on scroll, the chrome carries its own contrast. */
+header:not(.solid) .brand,header:not(.solid) .hnav a{color:#fff;
+  text-shadow:0 1px 14px rgba(0,0,0,.45)}
+html.scrolled header .brand,html.scrolled header .hnav a{color:var(--ink);
+  text-shadow:none}
+.hnav a:hover{opacity:1}
+@media(max-width:820px){.hnav a:not(.cta){display:none}}
+.cta{display:inline-flex;align-items:center;gap:.6em;background:var(--ink);
+  color:var(--bg);padding:13px 22px;border-radius:100px;text-decoration:none;
+  font:600 13px/1 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:.04em;opacity:1!important;
+  transition:transform .4s var(--out),background .3s}
+.cta:hover{background:var(--accent)}
+.cta .ar{transition:transform .4s var(--out)}
+.cta:hover .ar{transform:translateX(4px)}
+
+/* ------------------------------------------------------------------ hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;
+  padding:132px 0 clamp(38px,7vh,84px);overflow:hidden}
+.hero-img{position:absolute;inset:0;z-index:0}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-img:after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.46) 0%,rgba(0,0,0,.12) 34%,
+    rgba(0,0,0,.30) 62%,rgba(0,0,0,.74) 100%)}
+.hero .wrap{position:relative;z-index:2;color:#fff}
+.hero h1{color:#fff;max-width:14ch}
+.hero .sub{max-width:46ch;margin-top:22px;font-size:clamp(16px,1.6vw,20px);
+  color:rgba(255,255,255,.9)}
+.hero .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero .cta{background:var(--cream);color:var(--ink)}
+.hero .cta.line{background:transparent;color:#fff;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.5)}
+.hero .cta.line:hover{background:rgba(255,255,255,.12)}
+.scrollcue{position:absolute;left:50%;bottom:22px;z-index:2;translate:-50% 0;
+  width:1px;height:46px;background:rgba(255,255,255,.5);transform-origin:top}
+
+/* ------------------------------------------------------------- statement */
+.statement{padding:clamp(84px,13vh,168px) 0}
+.statement p{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-size:clamp(24px,3.4vw,44px);line-height:1.28;
+  max-width:22ch;margin:0}
+.statement .note{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:16px;max-width:52ch;margin-top:34px;
+  opacity:.72;line-height:1.7}
+
+/* ------------------------------------------------------------------ work */
+.work{padding:0 0 clamp(60px,10vh,130px)}
+.work .head{display:flex;justify-content:space-between;align-items:end;gap:24px;
+  padding-bottom:44px;flex-wrap:wrap}
+.proj{margin-bottom:clamp(46px,8vh,110px)}
+.frame{overflow:hidden;position:relative;background:var(--warm)}
+.frame img{width:100%;aspect-ratio:16/10;object-fit:cover;
+  transition:transform 1.3s var(--out)}
+.proj:hover .frame img{transform:scale(1.03)}
+.proj .cap{display:flex;justify-content:space-between;gap:20px;
+  padding-top:16px;font-size:14px;flex-wrap:wrap}
+.proj .cap .n{opacity:.55}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2.2vw,30px)}
+.pair .frame img{aspect-ratio:4/5}
+@media(max-width:760px){.pair{grid-template-columns:1fr}}
+
+/* --------------------------------------------------------------- process */
+.panel{background:var(--panel);color:var(--cream);
+  padding:clamp(76px,12vh,150px) 0}
+.panel h2{color:var(--cream)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(22px,3vw,54px);
+  margin-top:56px}
+@media(max-width:820px){.steps{grid-template-columns:1fr;gap:34px}}
+.step .k{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-size:46px;opacity:.32;line-height:1}
+.step h3{margin:10px 0 8px;color:var(--cream)}
+.step p{opacity:.74;font-size:15px;margin:0}
+.rule{height:1px;background:currentColor;opacity:.18;margin:44px 0 0;
+  transform-origin:left}
+
+/* ----------------------------------------------------------------- scope */
+.scope{padding:clamp(76px,12vh,150px) 0}
+.scope .grid{display:grid;grid-template-columns:repeat(2,1fr);
+  gap:clamp(26px,4vw,64px);margin-top:52px}
+@media(max-width:760px){.scope .grid{grid-template-columns:1fr}}
+.scope .it{border-top:1px solid color-mix(in srgb,var(--ink) 16%,transparent);
+  padding-top:22px}
+.scope .it h3{margin-bottom:8px}
+.scope .it p{font-size:15.5px;opacity:.74;margin:0}
+
+/* ----------------------------------------------------------------- proof */
+.proof{padding:clamp(64px,10vh,128px) 0;text-align:center}
+.stars{font-size:19px;letter-spacing:.18em;color:var(--accent)}
+.proof blockquote{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-size:clamp(23px,3vw,38px);
+  line-height:1.32;max-width:20ch;margin:22px auto 0}
+.proof .who{margin-top:22px;font-size:13.5px;letter-spacing:.1em;
+  text-transform:uppercase;opacity:.6}
+
+/* --------------------------------------------------------------- enquire */
+.enquire{background:var(--panel);color:var(--cream);
+  padding:clamp(86px,14vh,180px) 0}
+.enquire h2{color:var(--cream);max-width:15ch}
+.enquire .sub{opacity:.76;max-width:48ch;margin-top:20px}
+.enquire .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+.enquire .cta{background:var(--cream);color:var(--panel)}
+.enquire .cta.line{background:transparent;color:var(--cream);
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--cream) 45%,transparent)}
+footer{background:var(--panel);color:var(--cream);padding:0 0 54px;font-size:13.5px}
+footer .row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  opacity:.6;border-top:1px solid color-mix(in srgb,var(--cream) 18%,transparent);
+  padding-top:26px}
+
+/* ------------------------------------------------------------- the badge */
+/* This is a spec site. It says so, on every screen, without apology and
+   without covering the work. Sending an unmarked replica of someone's website
+   is how a pitch becomes a misunderstanding. */
+.spec{position:fixed;right:14px;bottom:14px;z-index:60;background:var(--ink);
+  color:var(--bg);font:600 11px/1.35 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:.05em;
+  padding:10px 14px;border-radius:8px;max-width:min(268px,66vw);
+  box-shadow:0 12px 30px rgba(0,0,0,.26)}
+/* On a phone the badge would cover the primary action, so it goes inline-bottom
+   and shrinks. A disclosure that hides the button is a worse disclosure. */
+@media(max-width:640px){
+  .spec{left:10px;right:10px;bottom:10px;max-width:none;font-size:10.5px;
+    padding:8px 12px}
+}
+.spec b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  opacity:.62;margin-bottom:3px}
+
+/* ------------------------------------------------------------ the motion */
+/* Content is visible as written. These only bite once the script proves it is
+   alive by putting .anim on <html>, so a JS failure leaves a plain readable
+   page rather than a blank one. */
+html.anim .rv{opacity:0;transform:translateY(24px);
+  transition:opacity .95s var(--out),transform .95s var(--out)}
+html.anim .rv.in{opacity:1;transform:none}
+html.anim .mask{clip-path:inset(0 0 100% 0);
+  transition:clip-path 1.25s var(--out)}
+html.anim .mask.in{clip-path:inset(0 0 0 0)}
+html.anim .rule{transform:scaleX(0);transition:transform 1.1s cubic-bezier(.76,0,.24,1)}
+html.anim .rule.in{transform:scaleX(1)}
+html.anim .d1{transition-delay:.09s}
+html.anim .d2{transition-delay:.18s}
+html.anim .d3{transition-delay:.27s}
+@media(prefers-reduced-motion:reduce){
+  html.anim .rv,html.anim .mask,html.anim .rule{opacity:1!important;
+    transform:none!important;clip-path:none!important}
+  .frame img,.hero-img img{transform:none!important}
+}
+
+.seq{position:relative}
+.seq .stick{position:sticky;top:0;height:100svh;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;background:#0d0c0a}
+.seq canvas{width:100%;height:100%;object-fit:cover;display:block}
+.seq .over{position:absolute;inset:0;display:flex;align-items:flex-end;
+  pointer-events:none}
+.seq .over .inner{width:min(1240px,100% - 44px);margin-inline:auto;
+  padding-bottom:clamp(40px,9vh,110px);color:#fff}
+.seq .cap{font:600 11px/1 -apple-system,sans-serif;letter-spacing:.2em;
+  text-transform:uppercase;opacity:.75;margin-bottom:14px}
+.seq h2{color:#fff;max-width:14ch}
+@media(prefers-reduced-motion:reduce){
+  .seq .stick{position:relative;height:auto}
+  .seq canvas{height:auto;aspect-ratio:16/9}
+}
+
+.gal{display:grid;gap:clamp(12px,2vw,22px);margin-top:38px}
+@media(min-width:820px){.gal{grid-template-columns:1fr 1fr}
+  .gal .g:nth-child(4n+1){grid-column:1 / -1}}
+.g{overflow:hidden;border-radius:14px;background:var(--warm);position:relative}
+.g video,.g img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;
+  transition:transform 1.1s var(--out)}
+@media(hover:hover){.g:hover video,.g:hover img{transform:scale(1.035)}}
+.g .cap{display:flex;justify-content:space-between;gap:12px;padding:12px 4px 0;
+  font-size:13.5px;opacity:.72}
+.vid video{width:100%;border-radius:14px;display:block;background:#1a1713}
+.vids{display:grid;gap:20px;margin-top:34px}
+@media(min-width:820px){.vids{grid-template-columns:1fr 1fr}}
+.spec{position:fixed;right:12px;bottom:12px;z-index:60;background:var(--ink);
+  color:var(--bg);font:600 11px/1.35 sans-serif;padding:9px 13px;border-radius:8px;
+  max-width:min(260px,64vw);box-shadow:0 12px 30px rgba(0,0,0,.28)}
+.spec b{display:block;font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+  opacity:.6;margin-bottom:3px}
+@media(max-width:620px){.spec{left:10px;right:10px;max-width:none;font-size:10.5px}}
+</style></head><body><header><div class="wrap row">
+<a class="brand" href="#top">KANNA</a>
+<nav class="hnav"><a href="#work">Work</a><a href="#services">Services</a>
+<a class="cta" href="#quote">Get a quote <span class="ar">&rarr;</span></a></nav>
+</div></header>
+
+<section class="seq" style="height:300vh" data-seq='{"base":"seq/","frames":["f000.jpg","f001.jpg","f002.jpg","f003.jpg","f004.jpg","f005.jpg","f006.jpg","f007.jpg","f008.jpg","f009.jpg","f010.jpg","f011.jpg","f012.jpg","f013.jpg","f014.jpg","f015.jpg","f016.jpg","f017.jpg","f018.jpg","f019.jpg","f020.jpg","f021.jpg","f022.jpg","f023.jpg","f024.jpg","f025.jpg","f026.jpg","f027.jpg","f028.jpg","f029.jpg","f030.jpg","f031.jpg","f032.jpg","f033.jpg","f034.jpg","f035.jpg"]}'><div class="stick"><canvas></canvas><div class="over"><div class="inner"><div class="cap">Scroll</div><h2>Built once,<br>properly.</h2></div></div></div></section>
+
+<section class="statement" id="top"><div class="wrap">
+<p class="rv">One contractor for the house and the garden, which almost nobody
+in San Diego actually is.</p>
+<p class="note rv d1">Kitchens, bathrooms, whole-home remodels, additions and
+ADUs, and the hardscape, pools and planting outside. Licence #1067407. Most
+trouble on a build comes from decisions taken late, so the drawings, the
+specification and the budget are settled before the site opens.</p>
+</div></section>
+
+<section class="work" id="work"><div class="wrap">
+<div class="head"><h2 class="rv">Selected work</h2>
+<div class="eyebrow rv d1">8 projects</div></div>
+<div class="gal"><div class="g rv"><video src="v/p00.mp4" poster="img/p00.jpg" aria-label="Paver terrace and lawn" muted loop playsinline autoplay preload="none"></video>
+<div class="cap"><span>Paver terrace and lawn</span><span style="opacity:.6">Hardscape</span></div></div><div class="g rv"><video src="v/p01.mp4" poster="img/p01.jpg" aria-label="Pool and spa at night" muted loop playsinline autoplay preload="none"></video>
+<div class="cap"><span>Pool and spa at night</span><span style="opacity:.6">Landscape</span></div></div><div class="g rv"><video src="v/p02.mp4" poster="img/p02.jpg" aria-label="Kitchen" muted loop playsinline autoplay preload="none"></video>
+<div class="cap"><span>Kitchen</span><span style="opacity:.6">Kitchen renovation</span></div></div><div class="g rv"><video src="v/p03.mp4" poster="img/p03.jpg" aria-label="Living room and fireplace" muted loop playsinline autoplay preload="none"></video>
+<div class="cap"><span>Living room and fireplace</span><span style="opacity:.6">Whole home</span></div></div><div class="g rv"><video src="v/p04.mp4" poster="img/p04.jpg" aria-label="Terrace from the deck" muted loop playsinline autoplay preload="none"></video>
+<div class="cap"><span>Terrace from the deck</span><span style="opacity:.6">Hardscape</span></div></div><div class="g rv"><video src="v/p05.mp4" poster="img/p05.jpg" aria-label="Bathroom" muted loop playsinline autoplay preload="none"></video>
+<div class="cap"><span>Bathroom</span><span style="opacity:.6">Bathroom remodeling</span></div></div><div class="g rv"><video src="v/p06.mp4" poster="img/p06.jpg" aria-label="Framing, home addition" muted loop playsinline autoplay preload="none"></video>
+<div class="cap"><span>Framing, home addition</span><span style="opacity:.6">New construction</span></div></div><div class="g rv"><video src="v/p07.mp4" poster="img/p07.jpg" aria-label="Kitchen, second view" muted loop playsinline autoplay preload="none"></video>
+<div class="cap"><span>Kitchen, second view</span><span style="opacity:.6">Kitchen renovation</span></div></div></div>
+</div></section>
+
+<section class="scope" id="services"><div class="wrap">
+<div class="eyebrow rv">Services</div>
+<h2 class="rv d1" style="margin-top:14px;max-width:16ch">What we take on.</h2>
+<div class="grid"><div class="it rv"><h3>Whole home remodeling</h3><p>Taken from drawings to handover on one contract, with one person answering the phone.</p></div><div class="it rv"><h3>Kitchen renovation</h3><p>Layout, cabinetry, stone and appliances, specified and scheduled before anything is ordered.</p></div><div class="it rv"><h3>Bathroom remodeling</h3><p>Waterproofing done properly, tile set properly, and finished on the date agreed.</p></div><div class="it rv"><h3>Landscape & hardscape</h3><p>Pavers, walls, lighting, pools and planting, built by the same team that did the house.</p></div><div class="it rv"><h3>Home additions & ADUs</h3><p>Permits handled, not described. Feasibility first, so you know early if it is worth starting.</p></div><div class="it rv"><h3>Garage conversion</h3><p>A room that feels like part of the house rather than a garage with a floor in it.</p></div></div>
+</div></section>
+
+<section class="panel"><div class="wrap">
+<div class="eyebrow rv" style="color:#cabfae">How it runs</div>
+<h2 class="rv d1" style="margin-top:14px;max-width:17ch">Three stages, and you
+always know which one you are in.</h2>
+<div class="steps">
+<div class="step rv"><div class="k">01</div><h3>Feasibility</h3>
+<p>What the site allows, what it will cost, and whether the project is worth
+starting. Said early, before anyone spends money on drawings.</p></div>
+<div class="step rv d1"><div class="k">02</div><h3>Design &amp; permits</h3>
+<p>Drawings developed to consent, with the authorities handled for you rather
+than described to you.</p></div>
+<div class="step rv d2"><div class="k">03</div><h3>Build</h3>
+<p>One contract, one programme, one team inside and out. Finished, snagged and
+warranted, with the paperwork in order.</p></div>
+</div><div class="rule"></div>
+</div></section>
+
+<section class="enquire" id="quote"><div class="wrap">
+<div class="eyebrow rv" style="color:#cabfae">Enquiries</div>
+<h2 class="rv d1" style="margin-top:16px">Tell us about<br>the project.</h2>
+<p class="sub rv d2">The address, roughly what you have in mind, and the budget
+you are working to. If it is not a fit we will say so early.</p>
+<div class="acts rv d3"><a class="cta" href="tel:6195143555">619-514-3555 <span class="ar">&rarr;</span></a>
+<a class="cta line" href="mailto:info@kannaconstructioninc.com">info@kannaconstructioninc.com</a></div>
+</div></section>
+
+<footer><div class="wrap row"><span>Kanna Construction &amp; Remodeling &middot; Lic #1067407</span>
+<span>Concept &middot; not a live website</span></div></footer>
+
+<div class="spec"><b>Concept</b>Built for Kanna using your own photographs.
+Not live, no prices shown.</div>
+<script>
+(function(){
+  var root=document.documentElement;
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  function onScroll(){ root.classList.toggle('scrolled',(scrollY||0)>10); }
+  addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  if(reduce||!('IntersectionObserver' in window)) return;
+
+  function start(){
+    root.classList.add('anim');
+    var SEL='.rv,.mask,.rule';
+    // Safety net: if the observer never fires — throttled, errored, whatever —
+    // show everything anyway. Decoration must never be able to hide content.
+    var net=setTimeout(function(){
+      document.querySelectorAll(SEL).forEach(function(el){el.classList.add('in');});
+    },2600);
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(x){
+        if(x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); }
+      });
+    },{threshold:0,rootMargin:'0px 0px -9% 0px'});
+    document.querySelectorAll(SEL).forEach(function(el){io.observe(el);});
+    // Anything already on screen should not wait for a scroll that may never come.
+    requestAnimationFrame(function(){
+      document.querySelectorAll(SEL).forEach(function(el){
+        if(el.getBoundingClientRect().top<innerHeight*0.92) el.classList.add('in');
+      });
+    });
+    addEventListener('pagehide',function(){clearTimeout(net);});
+
+    // The hero holds still while the page moves over it. Small offset: a big
+    // one turns to jitter the moment the scroll is not perfectly smooth, and
+    // that reads as cheap faster than no motion at all.
+    var img=document.querySelector('.hero-img img'), tick=false;
+    if(img) addEventListener('scroll',function(){
+      if(tick) return; tick=true;
+      requestAnimationFrame(function(){
+        tick=false;
+        var y=Math.min(scrollY,innerHeight)*0.16;
+        img.style.transform='translate3d(0,'+y.toFixed(1)+'px,0) scale(1.06)';
+      });
+    },{passive:true});
+  }
+
+  // A backgrounded tab has no layout, so the observer never fires and every
+  // .rv would sit at opacity 0 until focus — which reads as a blank page.
+  if(document.visibilityState!=='visible'){
+    document.addEventListener('visibilitychange',function once(){
+      if(document.visibilityState==='visible'){
+        document.removeEventListener('visibilitychange',once); start();
+      }
+    });
+  } else { start(); }
+})();
+</script><script>
+(function(){
+  var els = document.querySelectorAll('[data-seq]');
+  if(!els.length) return;
+  var reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  els.forEach(function(root){
+    var cfg    = JSON.parse(root.getAttribute('data-seq'));
+    var canvas = root.querySelector('canvas');
+    var ctx    = canvas.getContext('2d', {alpha:false});
+    var imgs   = new Array(cfg.frames.length);
+    var loaded = 0, current = -1, ready = false;
+
+    function draw(i){
+      var im = imgs[i];
+      if(!im) return;
+      if(canvas.width !== im.naturalWidth){
+        canvas.width  = im.naturalWidth;
+        canvas.height = im.naturalHeight;
+      }
+      ctx.drawImage(im, 0, 0);
+      current = i;
+    }
+
+    // Reduced motion gets the middle frame and no scrubbing at all. Scrubbing
+    // an image sequence is exactly the kind of motion the setting exists for.
+    if(reduce){
+      var mid = new Image();
+      mid.onload = function(){ imgs[0]=mid; draw(0); };
+      mid.src = cfg.base + cfg.frames[Math.floor(cfg.frames.length/2)];
+      return;
+    }
+
+    // Load in order, draw the first the moment it lands so the section is
+    // never an empty box, and only start scrubbing once enough of the strip
+    // exists to move through without stalling.
+    cfg.frames.forEach(function(name, i){
+      var im = new Image();
+      im.decoding = 'async';
+      im.onload = function(){
+        imgs[i] = im;
+        if(++loaded === 1) draw(0);
+        if(loaded >= Math.min(cfg.frames.length, 8)) ready = true;
+      };
+      im.onerror = function(){ if(++loaded >= cfg.frames.length) ready = true; };
+      im.src = cfg.base + name;
+    });
+
+    var ticking = false;
+    function update(){
+      ticking = false;
+      if(!ready) return;
+      var r = root.getBoundingClientRect();
+      var h = root.offsetHeight - window.innerHeight;
+      if(h <= 0) return;
+      // 0 when the section's top reaches the top of the screen, 1 when its
+      // bottom does. The section is taller than the viewport on purpose —
+      // that extra height IS the scrub distance.
+      var p = Math.max(0, Math.min(1, -r.top / h));
+      var i = Math.round(p * (cfg.frames.length - 1));
+      if(i !== current && imgs[i]) draw(i);
+    }
+    function onScroll(){
+      if(ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+    addEventListener('scroll', onScroll, {passive:true});
+    addEventListener('resize', onScroll, {passive:true});
+
+    // A hidden or backgrounded tab does not run requestAnimationFrame, so an
+    // update scheduled there never executes AND the ticking latch is never
+    // cleared — every later scroll is then silently ignored. Coming back to
+    // the tab must therefore reset the latch and redraw, or the sequence
+    // stays frozen on whichever frame it happened to be showing.
+    document.addEventListener('visibilitychange', function(){
+      if(document.visibilityState === 'visible'){ ticking = false; update(); }
+    });
+
+    // A handle on the element. Deliberately public: it is how you check a
+    // sequence on a real page without guessing — root._seq.status() says how
+    // many frames arrived and which one is showing, and update() forces a
+    // redraw. It also makes the engine testable, which a closure is not.
+    root._seq = {
+      update: update,
+      draw: draw,
+      status: function(){
+        return {frames: cfg.frames.length, loaded: loaded, ready: ready,
+                current: current};
+      }
+    };
+    onScroll();
+  });
+})();
+</script><script>
+(function(){
+  var vs=[].slice.call(document.querySelectorAll('.g video'));
+  if(!vs.length) return;
+  if(!('IntersectionObserver' in window)){ vs.forEach(function(v){v.preload='auto';v.play().catch(function(){});}); return; }
+  // Eight autoplaying clips would otherwise all download at once. Load and
+  // play only what is on screen, and pause what is not — this is the whole
+  // reason the page is 4MB rather than unusable on a phone.
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var v=e.target;
+      if(e.isIntersecting){ v.preload='auto'; v.play().catch(function(){}); }
+      else { v.pause(); }
+    });
+  },{rootMargin:'200px 0px'});
+  vs.forEach(function(v){ io.observe(v); });
+})();
+</script></body></html>
